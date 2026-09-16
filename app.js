@@ -277,11 +277,11 @@
     activeEditTarget = type;
     if (type === 'name') {
       dialogTitle.textContent = 'Update Your Name';
-      dialogInput.placeholder = 'e.g. Alex Morgan';
+      dialogInput.placeholder = 'e.g. Jason White 張家誠';
       dialogInput.value = userNameEl.textContent;
     } else {
       dialogTitle.textContent = 'Update Status & Daily Focus';
-      dialogInput.placeholder = 'e.g. ⚡ Building something exciting';
+      dialogInput.placeholder = 'e.g. 🏓 元智資工 ➔ 資工碩士班';
       dialogInput.value = statusTextEl.textContent;
     }
     editDialog.showModal();

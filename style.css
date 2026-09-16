@@ -1,39 +1,49 @@
 /* ==========================================================================
-   Design Tokens & CSS Variables
+   Design Tokens & Translucent Jellymorphism Variables
    ========================================================================== */
 :root {
-  /* Color Palette */
-  --bg-dark: #07080d;
-  --bg-card: rgba(15, 18, 30, 0.65);
-  --card-border: rgba(255, 255, 255, 0.12);
-  --card-border-hover: rgba(255, 255, 255, 0.25);
-  --card-shadow: 0 30px 70px -15px rgba(0, 0, 0, 0.7),
-                 0 0 45px -10px rgba(99, 102, 241, 0.15);
-
-  /* Accents */
-  --primary-cyan: #06b6d4;
-  --primary-cyan-glow: rgba(6, 182, 212, 0.35);
-  --primary-purple: #8b5cf6;
-  --primary-purple-glow: rgba(139, 92, 246, 0.3);
-  --accent-emerald: #10b981;
-  --accent-pink: #ec4899;
+  /* Core Jelly Palette */
+  --bg-dark: #050711;
+  --bg-gradient: radial-gradient(circle at 50% 0%, #111738 0%, #070a16 55%, #03040a 100%);
   
-  /* Text */
-  --text-main: #f8fafc;
-  --text-muted: #94a3b8;
-  --text-dim: #64748b;
+  /* Translucent Jelly Glass Tokens */
+  --jelly-card-bg: rgba(255, 255, 255, 0.07);
+  --jelly-card-border: rgba(255, 255, 255, 0.22);
+  --jelly-card-border-hover: rgba(255, 255, 255, 0.38);
+  --jelly-highlight: rgba(255, 255, 255, 0.7);
+  --jelly-shadow: 0 35px 80px -15px rgba(0, 0, 0, 0.75),
+                  inset 0 2px 2px rgba(255, 255, 255, 0.65),
+                  inset 0 -4px 10px rgba(0, 0, 0, 0.35),
+                  0 0 50px -10px rgba(56, 189, 248, 0.22);
 
-  /* Typography */
+  /* Vibrant Candy / Jelly Accents */
+  --jelly-cyan: #38bdf8;
+  --jelly-cyan-glow: rgba(56, 189, 248, 0.4);
+  --jelly-purple: #a855f7;
+  --jelly-purple-glow: rgba(168, 85, 247, 0.35);
+  --jelly-pink: #f472b6;
+  --jelly-emerald: #34d399;
+  --jelly-amber: #fbbf24;
+  --jelly-blue: #60a5fa;
+
+  /* Typography Colors */
+  --text-main: #ffffff;
+  --text-muted: #cbd5e1;
+  --text-dim: #94a3b8;
+
+  /* Fonts */
   --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
-  /* Layout & Transitions */
-  --radius-xl: 28px;
-  --radius-lg: 20px;
-  --radius-md: 14px;
+  /* Border Radii & Curves */
+  --radius-xl: 32px;
+  --radius-lg: 24px;
+  --radius-md: 16px;
   --radius-full: 9999px;
+
+  /* Bouncy Jelly Easings */
+  --ease-jelly: cubic-bezier(0.34, 1.56, 0.64, 1);
   --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 /* ==========================================================================
@@ -48,6 +58,7 @@
 html, body {
   width: 100%;
   min-height: 100vh;
+  background: var(--bg-gradient);
   background-color: var(--bg-dark);
   color: var(--text-main);
   font-family: var(--font-sans);
@@ -59,112 +70,126 @@ html, body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Background Ambient Lighting Orbs */
+/* ==========================================================================
+   Fluid Jelly Floating Orbs (Morphing Organic Blobs)
+   ========================================================================== */
 .ambient-glow {
   position: fixed;
-  border-radius: 50%;
   pointer-events: none;
-  filter: blur(100px);
+  filter: blur(80px);
   z-index: 0;
-  opacity: 0.55;
-  animation: floatOrb 22s infinite alternate ease-in-out;
+  opacity: 0.65;
+  animation: jellyMorph 18s infinite alternate ease-in-out;
 }
 
 .orb-1 {
-  width: 550px;
-  height: 550px;
-  background: radial-gradient(circle, rgba(139, 92, 246, 0.45) 0%, rgba(99, 102, 241, 0) 70%);
-  top: -10%;
-  left: 10%;
+  width: 580px;
+  height: 580px;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.5) 0%, rgba(99, 102, 241, 0.1) 65%, transparent 80%);
+  top: -12%;
+  left: 5%;
+  border-radius: 54% 46% 40% 60% / 55% 38% 62% 45%;
 }
 
 .orb-2 {
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(6, 182, 212, 0.38) 0%, rgba(20, 184, 166, 0) 70%);
+  width: 620px;
+  height: 620px;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.45) 0%, rgba(52, 211, 153, 0.12) 65%, transparent 80%);
   bottom: -15%;
-  right: 8%;
-  animation-duration: 28s;
-  animation-delay: -5s;
+  right: 5%;
+  border-radius: 40% 60% 65% 35% / 40% 55% 45% 60%;
+  animation-duration: 24s;
+  animation-delay: -6s;
 }
 
 .orb-3 {
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(236, 72, 153, 0.25) 0%, rgba(244, 63, 94, 0) 70%);
-  top: 40%;
-  left: 50%;
+  width: 440px;
+  height: 440px;
+  background: radial-gradient(circle, rgba(244, 114, 182, 0.38) 0%, rgba(251, 191, 36, 0.1) 65%, transparent 80%);
+  top: 35%;
+  left: 48%;
   transform: translate(-50%, -50%);
-  animation-duration: 18s;
-  animation-delay: -10s;
+  border-radius: 65% 35% 45% 55% / 35% 60% 40% 65%;
+  animation-duration: 16s;
+  animation-delay: -11s;
 }
 
-@keyframes floatOrb {
+@keyframes jellyMorph {
   0% {
-    transform: translate(0, 0) scale(1);
+    transform: translate(0, 0) scale(1) rotate(0deg);
+    border-radius: 54% 46% 40% 60% / 55% 38% 62% 45%;
   }
-  50% {
-    transform: translate(40px, -30px) scale(1.08);
+  33% {
+    transform: translate(35px, -25px) scale(1.08) rotate(45deg);
+    border-radius: 62% 38% 52% 48% / 42% 65% 35% 58%;
+  }
+  66% {
+    transform: translate(-25px, 30px) scale(0.95) rotate(90deg);
+    border-radius: 45% 55% 60% 40% / 60% 40% 55% 45%;
   }
   100% {
-    transform: translate(-30px, 40px) scale(0.95);
+    transform: translate(15px, -15px) scale(1.04) rotate(135deg);
+    border-radius: 58% 42% 38% 62% / 48% 52% 48% 52%;
   }
 }
 
-/* Subtle cyber noise / grain overlay */
+/* Subtle Specular Noise Overlay */
 .noise-overlay {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 0);
-  background-size: 24px 24px;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 0);
+  background-size: 28px 28px;
   z-index: 1;
-  opacity: 0.7;
+  opacity: 0.55;
 }
 
 /* ==========================================================================
-   Dashboard Main Card & Glassmorphism
+   Translucent Jelly Card Container
    ========================================================================== */
 .dashboard-wrapper {
   position: relative;
   z-index: 2;
   width: 100%;
-  max-width: 720px;
+  max-width: 740px;
   padding: 24px;
   margin: auto;
 }
 
 .glass-card {
   position: relative;
-  background: var(--bg-card);
-  backdrop-filter: blur(28px) saturate(180%);
-  -webkit-backdrop-filter: blur(28px) saturate(180%);
-  border: 1px solid var(--card-border);
+  background: var(--jelly-card-bg);
+  backdrop-filter: blur(34px) saturate(220%);
+  -webkit-backdrop-filter: blur(34px) saturate(220%);
+  border: 1.5px solid var(--jelly-card-border);
   border-radius: var(--radius-xl);
-  padding: 40px;
-  box-shadow: var(--card-shadow);
+  padding: 40px 38px;
+  box-shadow: var(--jelly-shadow);
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 30px;
   overflow: hidden;
-  transition: border-color 0.4s var(--ease-smooth), box-shadow 0.4s var(--ease-smooth);
+  transition: border-color 0.4s var(--ease-smooth), box-shadow 0.4s var(--ease-smooth), transform 0.4s var(--ease-jelly);
 }
 
 .glass-card:hover {
-  border-color: var(--card-border-hover);
-  box-shadow: 0 35px 80px -15px rgba(0, 0, 0, 0.8),
-              0 0 55px -8px rgba(6, 182, 212, 0.18);
+  border-color: var(--jelly-card-border-hover);
+  box-shadow: 0 40px 90px -15px rgba(0, 0, 0, 0.82),
+              inset 0 2.5px 3px rgba(255, 255, 255, 0.8),
+              inset 0 -5px 12px rgba(0, 0, 0, 0.4),
+              0 0 65px -8px rgba(56, 189, 248, 0.28);
 }
 
-/* Glass Card Top Glow Highlight */
+/* Curved Jelly Specular Glare Reflection on Card */
 .glass-card::before {
   content: '';
   position: absolute;
   top: 0;
-  left: 10%;
-  right: 10%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  left: 0;
+  right: 0;
+  height: 55%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.05) 30%, transparent 100%);
+  border-radius: var(--radius-xl) var(--radius-xl) 100% 100% / var(--radius-xl) var(--radius-xl) 30px 30px;
   pointer-events: none;
 }
 
@@ -175,54 +200,63 @@ html, body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
+  z-index: 1;
 }
 
+/* Jelly Pill Greeting Badge */
 .greeting-badge {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 8px 16px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.04) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 8px 18px;
   border-radius: var(--radius-full);
   font-size: 0.92rem;
   font-weight: 500;
-  color: var(--text-muted);
+  color: var(--text-main);
   letter-spacing: 0.02em;
-  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25),
+              inset 0 1.5px 1px rgba(255, 255, 255, 0.5),
+              inset 0 -1.5px 3px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(14px);
+  transition: all 0.3s var(--ease-jelly);
 }
 
 .greeting-badge:hover {
-  background: rgba(255, 255, 255, 0.08);
-  color: var(--text-main);
-  border-color: rgba(255, 255, 255, 0.16);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.07) 100%);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35),
+              inset 0 2px 2px rgba(255, 255, 255, 0.7);
 }
 
 .greeting-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #facc15; /* Sunlight gold */
-  filter: drop-shadow(0 0 6px rgba(250, 204, 21, 0.4));
-  animation: pulseLight 4s infinite ease-in-out;
+  color: #fbbf24;
+  filter: drop-shadow(0 0 8px rgba(251, 191, 36, 0.5));
+  animation: pulseJellyLight 3.5s infinite ease-in-out;
 }
 
-@keyframes pulseLight {
+@keyframes pulseJellyLight {
   0%, 100% { opacity: 0.85; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.1); }
+  50% { opacity: 1; transform: scale(1.15); }
 }
 
 .greeting-text {
-  font-weight: 500;
+  font-weight: 600;
 }
 
-/* 12H / 24H Toggle Switch Button */
+/* 12H / 24H Jelly Toggle Button */
 .format-toggle {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.03) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.22);
   border-radius: var(--radius-full);
   padding: 6px 14px 6px 8px;
   color: var(--text-muted);
@@ -230,21 +264,32 @@ html, body {
   font-family: var(--font-sans);
   font-size: 0.85rem;
   font-weight: 600;
-  transition: all 0.3s var(--ease-smooth);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2),
+              inset 0 1.5px 1px rgba(255, 255, 255, 0.5),
+              inset 0 -1.5px 3px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(14px);
+  transition: all 0.3s var(--ease-jelly);
 }
 
 .format-toggle:hover {
-  background: rgba(255, 255, 255, 0.09);
-  border-color: rgba(6, 182, 212, 0.4);
-  color: var(--text-main);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.06) 100%);
+  border-color: rgba(56, 189, 248, 0.5);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3), 0 0 14px rgba(56, 189, 248, 0.3);
+}
+
+.format-toggle:active {
+  transform: scale(0.96);
 }
 
 .toggle-track {
   width: 32px;
   height: 18px;
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.18);
   border-radius: var(--radius-full);
   position: relative;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.4);
   transition: background 0.3s ease;
 }
 
@@ -256,12 +301,13 @@ html, body {
   height: 14px;
   background: #ffffff;
   border-radius: 50%;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.4);
-  transition: transform 0.3s var(--ease-bounce), background 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.4), inset 0 1px 1px rgba(255, 255, 255, 0.9);
+  transition: transform 0.35s var(--ease-jelly), background 0.3s ease;
 }
 
 .format-toggle.active .toggle-track {
-  background: var(--primary-cyan);
+  background: var(--jelly-cyan);
+  box-shadow: 0 0 12px var(--jelly-cyan-glow);
 }
 
 .format-toggle.active .toggle-thumb {
@@ -271,21 +317,24 @@ html, body {
 .toggle-label {
   letter-spacing: 0.05em;
   font-size: 0.78rem;
+  font-weight: 700;
 }
 
 /* ==========================================================================
-   Profile & User Identity Section
+   Profile & User Identity (Jelly Style)
    ========================================================================== */
 .profile-section {
   display: flex;
   align-items: center;
-  gap: 22px;
+  gap: 24px;
+  position: relative;
+  z-index: 1;
 }
 
 .avatar-container {
   position: relative;
-  width: 76px;
-  height: 76px;
+  width: 86px;
+  height: 86px;
   flex-shrink: 0;
   border-radius: 50%;
   display: flex;
@@ -293,19 +342,38 @@ html, body {
   justify-content: center;
 }
 
+/* Translucent Glowing Jelly Halo */
 .avatar-ring {
   position: absolute;
-  inset: -3px;
+  inset: -4px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--primary-cyan), var(--primary-purple), var(--accent-pink));
+  background: linear-gradient(135deg, var(--jelly-cyan), var(--jelly-purple), var(--jelly-pink));
   opacity: 0.85;
-  filter: blur(1px);
-  animation: rotateRing 14s linear infinite;
+  filter: blur(2px);
+  animation: rotateJellyRing 12s linear infinite;
 }
 
-@keyframes rotateRing {
+@keyframes rotateJellyRing {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+.avatar-img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2.5px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5),
+              inset 0 2px 4px rgba(255, 255, 255, 0.7);
+  transition: transform 0.4s var(--ease-jelly), box-shadow 0.3s ease;
+  z-index: 1;
+}
+
+.avatar-container:hover .avatar-img {
+  transform: scale(1.08);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(56, 189, 248, 0.4);
 }
 
 .avatar-monogram {
@@ -313,28 +381,28 @@ html, body {
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  background: #111422;
-  border: 2px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(145deg, rgba(30, 41, 75, 0.85), rgba(15, 23, 42, 0.95));
+  border: 2px solid rgba(255, 255, 255, 0.25);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.6rem;
-  font-weight: 700;
+  font-size: 1.7rem;
+  font-weight: 800;
   letter-spacing: 0.04em;
   color: #ffffff;
-  background: linear-gradient(145deg, #161a2e, #0e111d);
-  box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.1);
-  transition: transform 0.3s var(--ease-bounce);
+  box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.4);
+  transition: transform 0.4s var(--ease-jelly);
+  z-index: 1;
 }
 
 .avatar-container:hover .avatar-monogram {
-  transform: scale(1.05);
+  transform: scale(1.08);
 }
 
 .identity-details {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
   flex-grow: 1;
 }
 
@@ -345,76 +413,290 @@ html, body {
 }
 
 .user-name {
-  font-size: 2.25rem;
+  font-size: 2.3rem;
   font-weight: 800;
   letter-spacing: -0.02em;
   line-height: 1.15;
-  background: linear-gradient(135deg, #ffffff 40%, rgba(255, 255, 255, 0.7) 100%);
+  background: linear-gradient(135deg, #ffffff 50%, rgba(255, 255, 255, 0.8) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   cursor: pointer;
   border-radius: 8px;
   padding: 2px 6px;
   margin-left: -6px;
-  transition: background 0.3s ease, text-shadow 0.3s ease;
-  position: relative;
+  transition: text-shadow 0.3s ease;
 }
 
 .user-name:hover {
-  text-shadow: 0 0 24px rgba(255, 255, 255, 0.4);
+  text-shadow: 0 0 28px rgba(255, 255, 255, 0.5);
 }
 
 .edit-pen-btn {
-  background: transparent;
-  border: none;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   color: var(--text-dim);
   cursor: pointer;
   padding: 6px;
-  border-radius: 8px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.2s ease;
-  opacity: 0.6;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.3);
+  transition: all 0.25s var(--ease-jelly);
+  opacity: 0.7;
 }
 
 .name-edit-wrapper:hover .edit-pen-btn,
 .edit-pen-btn:hover {
   opacity: 1;
-  color: var(--primary-cyan);
-  background: rgba(255, 255, 255, 0.05);
-  transform: scale(1.1);
+  color: var(--jelly-cyan);
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(56, 189, 248, 0.4);
+  transform: scale(1.15);
 }
 
-/* Status Pill with Pulse Dot */
+/* Profile Badges: Department & Specialty (Jelly Style) */
+.profile-badges {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.badge-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.83rem;
+  font-weight: 600;
+  padding: 4px 14px;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2),
+              inset 0 1.5px 1px rgba(255, 255, 255, 0.5),
+              inset 0 -1.5px 3px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s var(--ease-jelly);
+}
+
+.dept-badge {
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.25) 0%, rgba(139, 92, 246, 0.08) 100%);
+  border-color: rgba(168, 85, 247, 0.4);
+  color: #e9d5ff;
+}
+
+.dept-badge svg {
+  color: #c084fc;
+}
+
+.dept-badge:hover {
+  transform: translateY(-2px) scale(1.03);
+  border-color: rgba(168, 85, 247, 0.7);
+  box-shadow: 0 8px 20px rgba(168, 85, 247, 0.3),
+              inset 0 2px 2px rgba(255, 255, 255, 0.7);
+}
+
+.skill-badge {
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.22) 0%, rgba(20, 184, 166, 0.08) 100%);
+  border-color: rgba(56, 189, 248, 0.4);
+  color: #bae6fd;
+}
+
+.skill-badge:hover {
+  transform: translateY(-2px) scale(1.03);
+  border-color: rgba(56, 189, 248, 0.7);
+  box-shadow: 0 8px 20px rgba(56, 189, 248, 0.3),
+              inset 0 2px 2px rgba(255, 255, 255, 0.7);
+}
+
+.badge-emoji {
+  font-size: 0.95rem;
+  line-height: 1;
+}
+
+/* Profile Short Bio */
+.profile-bio {
+  font-size: 0.93rem;
+  line-height: 1.6;
+  color: #e2e8f0;
+  margin: 1px 0;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+/* ==========================================================================
+   Core Programming Skills: Translucent Jelly Badges
+   ========================================================================== */
+.skills-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 2px;
+}
+
+.skills-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.skills-label svg {
+  color: var(--jelly-cyan);
+}
+
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+/* The Translucent Jelly Chip */
+.jelly-chip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: var(--radius-full);
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  cursor: default;
+  overflow: hidden;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 6px 16px -2px rgba(0, 0, 0, 0.35),
+              inset 0 1.5px 1px rgba(255, 255, 255, 0.65),
+              inset 0 -2px 4px rgba(0, 0, 0, 0.2);
+  transition: transform 0.35s var(--ease-jelly), box-shadow 0.3s ease, border-color 0.3s ease;
+  user-select: none;
+}
+
+/* Curved Glossy Highlight on Chip */
+.chip-glass-shine {
+  position: absolute;
+  top: 0;
+  left: 12%;
+  right: 12%;
+  height: 48%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.1) 60%, transparent 100%);
+  border-radius: var(--radius-full) var(--radius-full) 40% 40%;
+  pointer-events: none;
+}
+
+.chip-icon {
+  font-size: 0.95rem;
+  line-height: 1;
+  position: relative;
+  z-index: 1;
+}
+
+.chip-name {
+  position: relative;
+  z-index: 1;
+}
+
+/* C / C++ Jelly Chip (Blue Gel) */
+.chip-cpp {
+  background: linear-gradient(145deg, rgba(59, 130, 246, 0.28) 0%, rgba(37, 99, 235, 0.1) 100%);
+  border: 1.5px solid rgba(96, 165, 250, 0.45);
+  color: #bfdbfe;
+}
+
+.chip-cpp:hover {
+  transform: translateY(-4px) scale(1.06);
+  border-color: rgba(96, 165, 250, 0.85);
+  box-shadow: 0 10px 25px -3px rgba(59, 130, 246, 0.45),
+              inset 0 2px 2px rgba(255, 255, 255, 0.8);
+  color: #ffffff;
+}
+
+/* Python Jelly Chip (Emerald & Gold Gel) */
+.chip-python {
+  background: linear-gradient(145deg, rgba(16, 185, 129, 0.26) 0%, rgba(234, 179, 8, 0.1) 100%);
+  border: 1.5px solid rgba(52, 211, 153, 0.45);
+  color: #a7f3d0;
+}
+
+.chip-python:hover {
+  transform: translateY(-4px) scale(1.06);
+  border-color: rgba(52, 211, 153, 0.85);
+  box-shadow: 0 10px 25px -3px rgba(16, 185, 129, 0.45),
+              inset 0 2px 2px rgba(255, 255, 255, 0.8);
+  color: #ffffff;
+}
+
+/* Java Jelly Chip (Sunset Orange Gel) */
+.chip-java {
+  background: linear-gradient(145deg, rgba(249, 115, 22, 0.28) 0%, rgba(239, 68, 68, 0.1) 100%);
+  border: 1.5px solid rgba(251, 146, 60, 0.45);
+  color: #fed7aa;
+}
+
+.chip-java:hover {
+  transform: translateY(-4px) scale(1.06);
+  border-color: rgba(251, 146, 60, 0.85);
+  box-shadow: 0 10px 25px -3px rgba(249, 115, 22, 0.45),
+              inset 0 2px 2px rgba(255, 255, 255, 0.8);
+  color: #ffffff;
+}
+
+/* C# Jelly Chip (Royal Purple Gel) */
+.chip-csharp {
+  background: linear-gradient(145deg, rgba(168, 85, 247, 0.28) 0%, rgba(139, 92, 246, 0.1) 100%);
+  border: 1.5px solid rgba(192, 132, 252, 0.45);
+  color: #e9d5ff;
+}
+
+.chip-csharp:hover {
+  transform: translateY(-4px) scale(1.06);
+  border-color: rgba(192, 132, 252, 0.85);
+  box-shadow: 0 10px 25px -3px rgba(168, 85, 247, 0.45),
+              inset 0 2px 2px rgba(255, 255, 255, 0.8);
+  color: #ffffff;
+}
+
+/* Status Pill with Jelly Capsule Glow */
 .status-pill {
   display: inline-flex;
   align-items: center;
   gap: 10px;
   align-self: flex-start;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 6px 14px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.03) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 7px 16px;
   border-radius: var(--radius-full);
   font-size: 0.88rem;
   color: var(--text-muted);
   cursor: pointer;
-  transition: all 0.3s var(--ease-smooth);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25),
+              inset 0 1.5px 1px rgba(255, 255, 255, 0.45),
+              inset 0 -1.5px 3px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(14px);
+  transition: all 0.3s var(--ease-jelly);
 }
 
 .status-pill:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(6, 182, 212, 0.35);
-  color: var(--text-main);
-  transform: translateY(-1px);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.05) 100%);
+  border-color: rgba(56, 189, 248, 0.45);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3), 0 0 16px rgba(56, 189, 248, 0.25);
 }
 
 .status-pulse-dot {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background-color: var(--accent-emerald);
-  box-shadow: 0 0 10px var(--accent-emerald);
+  background-color: var(--jelly-emerald);
+  box-shadow: 0 0 10px var(--jelly-emerald);
   position: relative;
 }
 
@@ -423,11 +705,11 @@ html, body {
   position: absolute;
   inset: -3px;
   border-radius: 50%;
-  border: 1.5px solid var(--accent-emerald);
-  animation: pulseDot 2.2s infinite ease-out;
+  border: 1.5px solid var(--jelly-emerald);
+  animation: pulseJellyDot 2.2s infinite ease-out;
 }
 
-@keyframes pulseDot {
+@keyframes pulseJellyDot {
   0% { transform: scale(0.9); opacity: 1; }
   100% { transform: scale(2.4); opacity: 0; }
 }
@@ -439,43 +721,60 @@ html, body {
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  opacity: 0.5;
-  transition: opacity 0.2s ease, color 0.2s ease;
+  opacity: 0.6;
+  transition: all 0.2s ease;
   margin-left: 2px;
 }
 
 .status-pill:hover .status-edit-icon {
   opacity: 1;
-  color: var(--primary-cyan);
+  color: var(--jelly-cyan);
 }
 
 /* ==========================================================================
-   Clock Display Card & Digits
+   Clock Display: Translucent Jelly Pod
    ========================================================================== */
 .clock-display-card {
-  background: rgba(10, 13, 24, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.09);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.07) 0%, rgba(15, 23, 42, 0.6) 100%);
+  border: 1.5px solid rgba(255, 255, 255, 0.22);
   border-radius: var(--radius-lg);
   padding: 34px 28px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: 22px;
   position: relative;
   overflow: hidden;
-  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 2px 2px rgba(255, 255, 255, 0.6),
+              inset 0 -3px 8px rgba(0, 0, 0, 0.4),
+              0 18px 45px -8px rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
 }
 
-/* Ambient glow in clock background */
+/* Top curved gloss on clock pod */
+.clock-display-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 5%;
+  right: 5%;
+  height: 45%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.04) 50%, transparent 100%);
+  border-radius: var(--radius-lg) var(--radius-lg) 50% 50%;
+  pointer-events: none;
+}
+
+/* Subtle luminous water-drop ambient core */
 .clock-display-card::after {
   content: '';
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 80%;
+  width: 75%;
   height: 60%;
-  background: radial-gradient(ellipse, rgba(6, 182, 212, 0.12) 0%, transparent 70%);
+  background: radial-gradient(ellipse, rgba(56, 189, 248, 0.16) 0%, transparent 70%);
   pointer-events: none;
   z-index: 0;
 }
@@ -507,39 +806,40 @@ html, body {
   display: inline-block;
   min-width: 1.18ch;
   text-align: center;
-  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.5), 0 0 25px rgba(255, 255, 255, 0.25);
 }
 
 .colon-separator {
   color: var(--text-dim);
-  opacity: 0.75;
+  opacity: 0.8;
   margin: 0 2px;
-  animation: blinkColon 1s infinite steps(1, start);
+  animation: blinkJellyColon 1s infinite steps(1, start);
 }
 
-@keyframes blinkColon {
-  0%, 50% { opacity: 0.8; }
+@keyframes blinkJellyColon {
+  0%, 50% { opacity: 0.85; }
   51%, 100% { opacity: 0.25; }
 }
 
 .seconds-accent {
-  color: var(--primary-cyan);
-  text-shadow: 0 0 24px var(--primary-cyan-glow);
+  color: var(--jelly-cyan);
+  text-shadow: 0 0 28px var(--jelly-cyan-glow), 0 0 10px var(--jelly-cyan);
   position: relative;
 }
 
 .ampm-indicator {
   font-family: var(--font-mono);
   font-size: 1.35rem;
-  font-weight: 600;
-  color: var(--primary-purple);
-  background: rgba(139, 92, 246, 0.12);
-  border: 1px solid rgba(139, 92, 246, 0.3);
-  padding: 4px 10px;
-  border-radius: 8px;
+  font-weight: 700;
+  color: #e9d5ff;
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.3) 0%, rgba(139, 92, 246, 0.12) 100%);
+  border: 1.5px solid rgba(192, 132, 252, 0.45);
+  padding: 4px 12px;
+  border-radius: 10px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  box-shadow: 0 0 16px var(--primary-purple-glow);
+  box-shadow: 0 0 18px var(--jelly-purple-glow),
+              inset 0 1.5px 1px rgba(255, 255, 255, 0.6);
   align-self: flex-start;
   margin-top: 8px;
   transition: opacity 0.3s ease, transform 0.3s ease;
@@ -549,24 +849,25 @@ html, body {
   display: none;
 }
 
-/* Seconds Progress Bar */
+/* Seconds Liquid Gel Progress Tube */
 .seconds-progress-bar {
   width: 100%;
-  max-width: 480px;
-  height: 4px;
-  background: rgba(255, 255, 255, 0.07);
+  max-width: 490px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
   border-radius: var(--radius-full);
   overflow: hidden;
   position: relative;
   z-index: 1;
+  box-shadow: inset 0 1.5px 3px rgba(0, 0, 0, 0.5);
 }
 
 .progress-fill {
   height: 100%;
   width: 0%;
-  background: linear-gradient(90deg, var(--primary-purple), var(--primary-cyan));
+  background: linear-gradient(90deg, var(--jelly-purple), var(--jelly-cyan), var(--jelly-emerald));
   border-radius: var(--radius-full);
-  box-shadow: 0 0 10px var(--primary-cyan);
+  box-shadow: 0 0 14px var(--jelly-cyan);
   transition: width 0.25s linear;
 }
 
@@ -582,6 +883,8 @@ html, body {
   font-size: 0.94rem;
   color: var(--text-muted);
   padding: 0 8px;
+  position: relative;
+  z-index: 1;
 }
 
 .meta-item {
@@ -591,13 +894,13 @@ html, body {
 }
 
 .meta-icon {
-  color: var(--primary-cyan);
+  color: var(--jelly-cyan);
   flex-shrink: 0;
-  opacity: 0.85;
+  opacity: 0.9;
 }
 
 .meta-value {
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.01em;
 }
 
@@ -608,85 +911,99 @@ html, body {
 
 .badge-tag {
   font-family: var(--font-mono);
-  font-size: 0.78rem;
-  font-weight: 600;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 2px 8px;
-  border-radius: 6px;
-  color: var(--text-muted);
+  font-size: 0.8rem;
+  font-weight: 700;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.04) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 3px 10px;
+  border-radius: 8px;
+  color: var(--text-main);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.4);
 }
 
 /* ==========================================================================
-   Quick Social & Action Links
+   Quick Social & Action Links (Jelly Chips)
    ========================================================================== */
 .quick-links {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
-  padding-top: 8px;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  gap: 14px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  z-index: 1;
 }
 
 .link-chip {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.03) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.22);
   border-radius: var(--radius-full);
-  padding: 8px 18px;
-  color: var(--text-muted);
+  padding: 9px 20px;
+  color: var(--text-main);
   text-decoration: none;
-  font-size: 0.88rem;
-  font-weight: 500;
-  transition: all 0.3s var(--ease-smooth);
+  font-size: 0.9rem;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25),
+              inset 0 1.5px 1px rgba(255, 255, 255, 0.55),
+              inset 0 -1.5px 3px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(14px);
+  transition: all 0.3s var(--ease-jelly);
 }
 
 .link-chip:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.2);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.06) 100%);
+  border-color: rgba(255, 255, 255, 0.45);
   color: #ffffff;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px -4px rgba(0, 0, 0, 0.4);
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 10px 24px -3px rgba(0, 0, 0, 0.45),
+              inset 0 2px 2px rgba(255, 255, 255, 0.75);
+}
+
+.link-chip:active {
+  transform: scale(0.96);
 }
 
 .link-chip svg {
-  transition: transform 0.2s ease;
+  transition: transform 0.25s var(--ease-jelly);
 }
 
 .link-chip:hover svg {
-  transform: scale(1.15);
+  transform: scale(1.18);
 }
 
 /* ==========================================================================
-   Dialog / Modal Styling
+   Jelly Dialog / Modal Styling
    ========================================================================== */
 .glass-dialog {
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  background: rgba(18, 22, 38, 0.92);
-  backdrop-filter: blur(28px);
-  -webkit-backdrop-filter: blur(28px);
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  background: rgba(15, 20, 38, 0.88);
+  backdrop-filter: blur(34px);
+  -webkit-backdrop-filter: blur(34px);
   border-radius: var(--radius-lg);
-  padding: 30px;
+  padding: 32px;
   max-width: 440px;
   width: 90%;
   margin: auto;
-  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.8), 0 0 40px rgba(6, 182, 212, 0.15);
+  box-shadow: 0 40px 90px rgba(0, 0, 0, 0.85),
+              inset 0 2px 2px rgba(255, 255, 255, 0.65),
+              0 0 50px rgba(56, 189, 248, 0.25);
   color: var(--text-main);
-  animation: dialogPop 0.3s var(--ease-smooth);
+  animation: dialogJellyPop 0.35s var(--ease-jelly);
 }
 
 .glass-dialog::backdrop {
-  background: rgba(3, 5, 10, 0.7);
-  backdrop-filter: blur(6px);
+  background: rgba(3, 5, 12, 0.75);
+  backdrop-filter: blur(8px);
 }
 
-@keyframes dialogPop {
+@keyframes dialogJellyPop {
   from {
     opacity: 0;
-    transform: scale(0.94) translateY(8px);
+    transform: scale(0.9) translateY(12px);
   }
   to {
     opacity: 1;
@@ -701,12 +1018,12 @@ html, body {
 }
 
 .dialog-title {
-  font-size: 1.4rem;
-  font-weight: 700;
+  font-size: 1.45rem;
+  font-weight: 800;
 }
 
 .dialog-subtitle {
-  font-size: 0.9rem;
+  font-size: 0.92rem;
   color: var(--text-muted);
   margin-top: -8px;
 }
@@ -717,21 +1034,22 @@ html, body {
 
 .dialog-input {
   width: 100%;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1.5px solid rgba(255, 255, 255, 0.22);
   border-radius: var(--radius-md);
-  padding: 12px 16px;
+  padding: 12px 18px;
   font-family: var(--font-sans);
   font-size: 1.05rem;
   color: #ffffff;
   outline: none;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.35);
   transition: all 0.25s ease;
 }
 
 .dialog-input:focus {
-  border-color: var(--primary-cyan);
-  box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.25);
-  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--jelly-cyan);
+  box-shadow: 0 0 0 3.5px rgba(56, 189, 248, 0.3), inset 0 2px 4px rgba(0, 0, 0, 0.35);
+  background: rgba(255, 255, 255, 0.12);
 }
 
 .dialog-actions {
@@ -744,56 +1062,67 @@ html, body {
 .btn {
   font-family: var(--font-sans);
   font-size: 0.92rem;
-  font-weight: 600;
-  padding: 10px 20px;
+  font-weight: 700;
+  padding: 10px 22px;
   border-radius: var(--radius-full);
   cursor: pointer;
-  transition: all 0.25s var(--ease-smooth);
+  transition: all 0.25s var(--ease-jelly);
   border: none;
 }
 
 .btn-secondary {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.1);
   color: var(--text-muted);
+  border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 .btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.12);
-  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+  transform: translateY(-2px);
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--primary-cyan), #0284c7);
+  background: linear-gradient(135deg, var(--jelly-cyan), #0284c7);
   color: #ffffff;
-  box-shadow: 0 4px 14px rgba(6, 182, 212, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 0 6px 18px rgba(56, 189, 248, 0.4),
+              inset 0 1.5px 1px rgba(255, 255, 255, 0.7);
 }
 
 .btn-primary:hover {
-  background: linear-gradient(135deg, #22d3ee, #0ea5e9);
-  box-shadow: 0 6px 20px rgba(6, 182, 212, 0.5);
-  transform: translateY(-1px);
+  background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+  box-shadow: 0 8px 24px rgba(56, 189, 248, 0.55),
+              inset 0 2px 2px rgba(255, 255, 255, 0.85);
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: scale(0.95);
 }
 
 /* ==========================================================================
-   Toast Notification
+   Toast Notification (Jelly Style)
    ========================================================================== */
 .toast-notification {
   position: fixed;
   bottom: 28px;
   left: 50%;
   transform: translateX(-50%) translateY(100px);
-  background: rgba(15, 23, 42, 0.9);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(6, 182, 212, 0.4);
+  background: rgba(15, 23, 42, 0.92);
+  backdrop-filter: blur(16px);
+  border: 1.5px solid rgba(56, 189, 248, 0.45);
   color: #ffffff;
-  padding: 10px 22px;
+  padding: 10px 24px;
   border-radius: var(--radius-full);
-  font-size: 0.9rem;
-  font-weight: 500;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(6, 182, 212, 0.25);
+  font-size: 0.92rem;
+  font-weight: 600;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6),
+              inset 0 1.5px 1px rgba(255, 255, 255, 0.5),
+              0 0 25px rgba(56, 189, 248, 0.3);
   pointer-events: none;
   opacity: 0;
-  transition: transform 0.4s var(--ease-bounce), opacity 0.3s ease;
+  transition: transform 0.4s var(--ease-jelly), opacity 0.3s ease;
   z-index: 100;
 }
 
@@ -811,7 +1140,7 @@ html, body {
   }
 
   .glass-card {
-    padding: 26px 20px;
+    padding: 28px 20px;
     gap: 24px;
     border-radius: var(--radius-lg);
   }
@@ -819,12 +1148,12 @@ html, body {
   .profile-section {
     flex-direction: column;
     text-align: center;
-    gap: 14px;
+    gap: 16px;
   }
 
   .avatar-container {
-    width: 68px;
-    height: 68px;
+    width: 78px;
+    height: 78px;
   }
 
   .name-edit-wrapper {
@@ -832,7 +1161,24 @@ html, body {
   }
 
   .user-name {
-    font-size: 1.85rem;
+    font-size: 1.9rem;
+  }
+
+  .profile-badges {
+    justify-content: center;
+  }
+
+  .profile-bio {
+    text-align: center;
+    font-size: 0.9rem;
+  }
+
+  .skills-wrapper {
+    align-items: center;
+  }
+
+  .skills-grid {
+    justify-content: center;
   }
 
   .status-pill {

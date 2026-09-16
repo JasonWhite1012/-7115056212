@@ -66,9 +66,10 @@
 
       <!-- Profile & Identity Section -->
       <div class="profile-section">
-        <div class="avatar-container" id="avatar-container" title="Click name below to customize">
+        <div class="avatar-container" id="avatar-container" title="Jason White 張家誠">
           <div class="avatar-ring"></div>
-          <div class="avatar-monogram" id="avatar-monogram">AM</div>
+          <img src="avatar.jpg" alt="Jason White" class="avatar-img" id="avatar-img" onerror="this.style.display='none'; document.getElementById('avatar-monogram').style.display='flex';">
+          <div class="avatar-monogram" id="avatar-monogram" style="display: none;">JW</div>
         </div>
 
         <div class="identity-details">
@@ -82,10 +83,63 @@
             </button>
           </div>
 
+          <!-- Academic & Specialty Badges -->
+          <div class="profile-badges">
+            <span class="badge-item dept-badge" title="科系">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+              </svg>
+              <span>資訊工程學系碩士班</span>
+            </span>
+            <span class="badge-item skill-badge" title="專長">
+              <span class="badge-emoji">🏓</span>
+              <span>專長：桌球</span>
+            </span>
+          </div>
+
+          <!-- Short Introduction Bio -->
+          <p class="profile-bio" id="profile-bio">
+            來自元智大學資訊工程學系，現就讀資工所碩士班。熱愛程式開發與技術探索，課餘時間熱衷於桌球運動！
+          </p>
+
+          <!-- Core Programming Skills (Jelly Badges) -->
+          <div class="skills-wrapper">
+            <span class="skills-label">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline>
+              </svg>
+              <span>專長技能</span>
+            </span>
+            <div class="skills-grid" id="skills-grid">
+              <div class="jelly-chip chip-cpp" title="C / C++">
+                <span class="chip-glass-shine" aria-hidden="true"></span>
+                <span class="chip-icon">⚡</span>
+                <span class="chip-name">C / C++</span>
+              </div>
+              <div class="jelly-chip chip-python" title="Python">
+                <span class="chip-glass-shine" aria-hidden="true"></span>
+                <span class="chip-icon">🐍</span>
+                <span class="chip-name">Python</span>
+              </div>
+              <div class="jelly-chip chip-java" title="Java">
+                <span class="chip-glass-shine" aria-hidden="true"></span>
+                <span class="chip-icon">☕</span>
+                <span class="chip-name">Java</span>
+              </div>
+              <div class="jelly-chip chip-csharp" title="C#">
+                <span class="chip-glass-shine" aria-hidden="true"></span>
+                <span class="chip-icon">🔷</span>
+                <span class="chip-name">C#</span>
+              </div>
+            </div>
+          </div>
+
           <!-- Interactive Daily Focus / Status Badge -->
           <div class="status-pill" id="status-pill" title="Click to edit your status" tabindex="0">
             <span class="status-pulse-dot" aria-hidden="true"></span>
-            <span class="status-text" id="status-text">⚡ Crafting extraordinary experiences</span>
+            <span class="status-text" id="status-text">🏓 元智資工 ➔ 資工碩士班｜熱愛桌球與軟體開發</span>
             <button class="status-edit-icon" id="edit-status-btn" aria-label="Edit status" title="Edit status">
               <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"
                 stroke-linecap="round" stroke-linejoin="round">
