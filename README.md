@@ -2,6 +2,12 @@
 
 一個具備現代感賽博極光（Aurora）與毛玻璃擬態（Glassmorphism）風格的個人時鐘與儀表板首頁。
 
+<p align="center">
+  <a href="https://jasonwhite1012.github.io/-7115056212/">
+    <img src="./preview.png" alt="Cyber-Glassmorphic Dashboard Preview" width="100%">
+  </a>
+</p>
+
 ---
 
 ## 🚀 Live Demo 線上預覽
