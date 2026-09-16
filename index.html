@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Personal dashboard featuring real-time digital clock, personalized greeting, live date, and customizable identity.">
+  <title>Personal Page • Live Dashboard</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Outfit:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- Ambient background lighting orbs -->
+  <div class="ambient-glow orb-1" aria-hidden="true"></div>
+  <div class="ambient-glow orb-2" aria-hidden="true"></div>
+  <div class="ambient-glow orb-3" aria-hidden="true"></div>
+
+  <!-- Noise texture overlay for cyber-glass aesthetic -->
+  <div class="noise-overlay" aria-hidden="true"></div>
+
+  <!-- Main Container -->
+  <main class="dashboard-wrapper">
+    <section class="glass-card" id="main-card">
+
+      <!-- Top Bar: Greeting Badge & Action Controls -->
+      <header class="card-header">
+        <div class="greeting-badge" id="greeting-container">
+          <span class="greeting-icon" id="greeting-icon" aria-hidden="true">
+            <!-- Dynamic SVG inserted via JS -->
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+          </span>
+          <span class="greeting-text" id="greeting-text">Good day</span>
+        </div>
+
+        <div class="header-controls">
+          <!-- 12h / 24h Toggle -->
+          <button class="control-btn format-toggle" id="format-toggle" title="Switch 12h / 24h format"
+            aria-label="Toggle time format">
+            <span class="toggle-track">
+              <span class="toggle-thumb"></span>
+            </span>
+            <span class="toggle-label" id="format-label">12H</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Profile & Identity Section -->
+      <div class="profile-section">
+        <div class="avatar-container" id="avatar-container" title="Click name below to customize">
+          <div class="avatar-ring"></div>
+          <div class="avatar-monogram" id="avatar-monogram">AM</div>
+        </div>
+
+        <div class="identity-details">
+          <div class="name-edit-wrapper">
+            <h1 class="user-name" id="user-name" title="Click to edit your name" tabindex="0">Jason White 張家誠</h1>
+            <button class="edit-pen-btn" id="edit-name-btn" title="Edit name" aria-label="Edit name">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Interactive Daily Focus / Status Badge -->
+          <div class="status-pill" id="status-pill" title="Click to edit your status" tabindex="0">
+            <span class="status-pulse-dot" aria-hidden="true"></span>
+            <span class="status-text" id="status-text">⚡ Crafting extraordinary experiences</span>
+            <button class="status-edit-icon" id="edit-status-btn" aria-label="Edit status" title="Edit status">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 20h9"></path>
+                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Clock Display Section -->
+      <div class="clock-display-card" id="clock-card">
+        <div class="clock-main">
+          <div class="time-digits-group">
+            <span class="digit-box" id="clock-hours">10</span>
+            <span class="colon-separator">:</span>
+            <span class="digit-box" id="clock-minutes">15</span>
+            <span class="colon-separator">:</span>
+            <span class="digit-box seconds-accent" id="clock-seconds">30</span>
+          </div>
+          <div class="ampm-indicator" id="clock-ampm">AM</div>
+        </div>
+
+        <!-- Second Progress Tracker Bar -->
+        <div class="seconds-progress-bar" title="Seconds progress of current minute">
+          <div class="progress-fill" id="seconds-progress"></div>
+        </div>
+      </div>
+
+      <!-- Date & Location Metadata Strip -->
+      <footer class="metadata-strip">
+        <div class="meta-item" id="date-container">
+          <svg class="meta-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+          <span class="meta-value" id="current-date">Wednesday, September 16, 2026</span>
+        </div>
+
+        <div class="meta-divider" aria-hidden="true">•</div>
+
+        <div class="meta-item" id="timezone-container">
+          <svg class="meta-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
+          <span class="meta-value" id="current-timezone">GMT+8 (Asia/Shanghai)</span>
+        </div>
+
+        <div class="meta-divider" aria-hidden="true">•</div>
+
+        <div class="meta-item" id="day-stats-container">
+          <span class="badge-tag" id="day-of-year">Day 259</span>
+          <span class="badge-tag" id="week-number">W38</span>
+        </div>
+      </footer>
+
+      <!-- Quick Action / Social Links -->
+      <div class="quick-links">
+        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="link-chip" title="GitHub">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+            <path
+              d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
+          </svg>
+          <span>GitHub</span>
+        </a>
+
+        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="link-chip" title="LinkedIn">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+            <path
+              d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+          </svg>
+          <span>LinkedIn</span>
+        </a>
+
+        <a href="mailto:hello@example.com" class="link-chip" id="email-chip" title="Send Email">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+          </svg>
+          <span>Contact</span>
+        </a>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- In-Place Edit Modal / Prompt Dialog -->
+  <dialog class="glass-dialog" id="edit-dialog">
+    <form method="dialog" class="dialog-form" id="dialog-form">
+      <h3 class="dialog-title" id="dialog-title">Update Your Name</h3>
+      <p class="dialog-subtitle">Personalize your dashboard display.</p>
+
+      <div class="input-group">
+        <input type="text" id="dialog-input" class="dialog-input" autocomplete="off" maxlength="40" required
+          placeholder="Enter here...">
+      </div>
+
+      <div class="dialog-actions">
+        <button type="button" class="btn btn-secondary" id="dialog-cancel-btn">Cancel</button>
+        <button type="submit" class="btn btn-primary" id="dialog-save-btn">Save Changes</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Live toast notification -->
+  <div class="toast-notification" id="toast" role="status" aria-live="polite">
+    <span id="toast-message">Saved successfully</span>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
