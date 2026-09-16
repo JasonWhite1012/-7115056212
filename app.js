@@ -281,7 +281,7 @@
       dialogInput.value = userNameEl.textContent;
     } else {
       dialogTitle.textContent = 'Update Status & Daily Focus';
-      dialogInput.placeholder = 'e.g. 🏓 元智資工 ➔ 資工碩士班';
+      dialogInput.placeholder = 'e.g. 🏓 元智資工 ➔ 中興資工所碩士班';
       dialogInput.value = statusTextEl.textContent;
     }
     editDialog.showModal();
